@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnInit {
   newEmployee: Employee;
   username = '';
   msgs: Message[] = [];
+  lowerLeftNotification: Message[] = [];
   uploadedFiles: any[] = [];
   formType: string;
 
@@ -70,6 +72,7 @@ export class DashboardComponent implements OnInit {
 
   onShow(formType: 'New' | 'Update', rowData?: any) {
     this.msgs = [];
+    this.lowerLeftNotification = [];
     if (rowData) {
       Object.keys(rowData).forEach(empKey => {
         this.sidebarForm.get(empKey).setValue(rowData[empKey]);
@@ -89,18 +92,31 @@ export class DashboardComponent implements OnInit {
   }
 
   onInsertData() {
+    this.msgs = [];
     if (this.sidebarForm.valid) {
       if (this.formType === 'Update') {
         const existingEmployee = this.employees.find(emp => emp.id === this.sidebarForm.value.id);
-        this.employees[this.employees.indexOf(existingEmployee)] = this.sidebarForm.value;
+        if (_.isEqual(existingEmployee, this.sidebarForm.value)) {
+          this.msgs.push({severity: 'warn', summary: '', detail: 'No data was changed!'});
+          return;
+        } else {
+          this.employees[this.employees.indexOf(existingEmployee)] = this.sidebarForm.value;
+        }
       } else {
         this.sidebarForm.value.id = this.employees.sort((emp1, emp2) => emp1.id - emp2.id)[this.employees.length - 1].id + 1;
         this.employees = [...this.employees, this.sidebarForm.value];
       }
-      this.msgs.push({severity: 'success', summary: 'Success: ', detail: 'Data added successfully!'});
+      this.display = false;
+      this.lowerLeftNotification = [];
+      this.lowerLeftNotification.push(
+        {
+          severity: 'success',
+          summary: 'Success: ',
+          detail: `Data has been ${this.formType === 'Update' ? 'updated' : 'added'}!`
+        }
+      );
     } else {
-      this.msgs = [];
-      this.msgs.push({severity: 'error', summary: 'Error: ', detail: 'Please input valid data!'});
+      this.msgs.push({severity: 'error', summary: 'Error: ', detail: 'Please complete all required fields!'});
       this.sidebarForm.reset();
     }
   }
