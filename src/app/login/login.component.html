@@ -1,0 +1,33 @@
+<div class="ui-g-12 ui-md-4 ui-md-offset-4" style="margin-top: 100px;">
+  <p-panel header="Please Login">
+    <form [formGroup]="loginForm" (ngSubmit)="callLogin()" >
+      <span class="ui-float-label">
+        <input
+          type="text"
+          placeholder="Username"
+          pInputText
+          class="width100"
+          formControlName="username"
+          (keyup.enter)="onPasswordEnter()" />
+      </span>
+      <span class="ui-float-label">
+        <input
+          type="password"
+          placeholder="Password"
+          class="width100"
+          pInputText
+          formControlName="password"
+          (keyup.enter)="onPasswordEnter()" />
+      </span>
+      <button
+        pButton
+        type="button"
+        class="width100"
+        label="Login"
+        (click)="onClick()"></button>
+    </form>
+  </p-panel>
+  <p-messages [(value)]="msgs"></p-messages>
+</div>
+
+
