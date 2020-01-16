@@ -3,6 +3,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="callLogin()" >
       <span class="ui-float-label">
         <input
+          id="username-field"
           type="text"
           placeholder="Username"
           pInputText
@@ -12,6 +13,7 @@
       </span>
       <span class="ui-float-label">
         <input
+          id="password-field"
           type="password"
           placeholder="Password"
           class="width100"
