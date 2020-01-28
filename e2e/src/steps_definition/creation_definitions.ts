@@ -16,7 +16,6 @@ Given('I am on the dashboard', async function () {
     }
     else{
         throw Error('The user is not on the dashboard page');
-
     }
 
   });

@@ -16,15 +16,14 @@ Given('I am on the dashboard2', async function () {
       }
       else{
           throw Error('The user is not on the dashboard page');
-  
       }
 
   });
 
 When('I updated an Employee', async function () {
-  await DashboardPage.updateEmployee();
 
-    
+  await DashboardPage.updateEmployee();
+  
   });
 
 Then('I should see the updated success message {string}', async function(expectedMessage: string) {
@@ -49,15 +48,7 @@ Then('I should see the updated data on the table', async function () {
   
     console.log('final checking success');
   });
-  // let rowData;
-  // ​
-  //   rowData = (await DashboardPage.checkTableRowForData('Japan Nihonjin Titus') as string);
-  //   rowData = (rowData.replace('Delete', '')).trim();
-  //   expect('1 Cara Steves Japan Nihonjin Titus Sales Assistant 5 Google').to.equal(rowData);
-  
-  //   console.log('final checking success');
-  // });
-  
+
 
 
 

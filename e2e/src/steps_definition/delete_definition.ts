@@ -39,9 +39,6 @@ Then('The deleted data will not be shown in the table', async function () {
 
   expect(rowData).to.equal(null);
 
-  // rowData = (rowData.replace('Delete', '')).trim();
-  // expect('1 Brenden Wagner United States of America, California American Facebook Software Engineer 8 Facebook').to.equal(rowData);
-
   console.log('final checking success');
 
   });

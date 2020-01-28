@@ -21,3 +21,4 @@ export class SecurityPage {
        await this.loginButton.click();
     }
 }
+

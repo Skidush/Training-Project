@@ -15,7 +15,6 @@ When('I log in', async function () {
 
 Then('I should be redirected to the dashboard', async function () {
 
-
     expect (await browser.getCurrentUrl(), `the current url is `).to.equal("http://localhost:4200/dashboard");
   
   });
