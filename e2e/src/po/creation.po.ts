@@ -33,4 +33,14 @@ export class FormPage {
     //    browser.executeScript('window.scrollTo(0,document.body.scrollHeight)');
        await element.all(by.tagName('p-dropdownitem')).get(1).click();
     }
+
+    static async updateFill(){
+      await this.getFormControlElement('nationality').clear();
+      await this.getFormControlElement('nationality').sendKeys('Japanese');
+      await this.getFormControlElement('company').clear();
+      await this.getFormControlElement('company').sendKeys('Titus');
+      await this.getFormControlElement('country').clear();
+      await this.getFormControlElement('country').sendKeys('Japan');
+      browser.sleep(2000);
+    }
 }

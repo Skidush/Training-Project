@@ -39,15 +39,8 @@ export class DashboardPage {
   }
 
   static async updateEmployee(){
-    // await this.clickTable.click();
     await this.table.click();
-    await element(by.css('input[formcontrolname="nationality"]')).clear();
-    await element(by.css('input[formcontrolname="nationality"]')).sendKeys("Japanese");
-    await element(by.css('input[formcontrolname="company"]')).clear();
-    await element(by.css('input[formcontrolname="company"]')).sendKeys("Titus");
-    await element(by.css('input[formcontrolname="country"]')).clear();
-    await element(by.css('input[formcontrolname="country"]')).sendKeys("Japan");
-    // await FormPage.updateForm();
+    await FormPage.updateFill();
     await FormPage.updateButton.click();
   }
 ​
