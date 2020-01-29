@@ -1,7 +1,6 @@
 import { element, by, browser } from 'protractor';
 import { FormPage } from './creation.po';
 ​import { Alert } from 'selenium-webdriver';
-
 export class DashboardPage {
 
   // static get tableFiles(){

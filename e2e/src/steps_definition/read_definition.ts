@@ -19,68 +19,44 @@ Given('I redirected on the dashboard', async function () {
   if (!(await dashboardElement.isPresent())) {
     throw Error('The user is not on the dashboard page');
   }
-  });
+});
 
 When('I browse the table', async function () {
-    const tableObject =  element(by.tagName('table'));
-    if(await tableObject.isPresent()){
-        console.log('success table view')
-        return true;
-    }
-    else{
-        throw Error('error');
-    }
-    
-  });
+  const tableObject =  element(by.tagName('table'));
+  if(await tableObject.isPresent()){
+    return true;
+  }
+  else{
+    throw Error('error');
+  }
+});
 
 Then('I should see the details of different employees', async function () {
-    
-    let rowData;
-    let rowData2;
-    let rowData3;
-  
-    let counter: number = 0;
-    // console.log(await DashboardPage.tableRows.getText());
+  let rowData;
+  let rowData2;
+  let rowData3;
+  let counter: number = 0;
 
-    rowData = (await DashboardPage.checkTableRowForData('1 Cara Steves United States of America, New York American Walmart Sales Assistant 5 Google') as string);
-    rowData = (rowData.replace('Delete', '')).trim();
+  rowData = (await DashboardPage.checkTableRowForData('1 Cara Steves United States of America, New York American Walmart Sales Assistant 5 Google') as string);
+  rowData = (rowData.replace('Delete', '')).trim();
 
-    rowData2 = (await DashboardPage.checkTableRowForData('4 Jenny Chang Singapore, Singapore Chinese Singapore Airlines Regional Director 15 Twitter') as string);
-    rowData2= (rowData2.replace('Delete', '')).trim();
+  rowData2 = (await DashboardPage.checkTableRowForData('4 Jenny Chang Singapore, Singapore Chinese Singapore Airlines Regional Director 15 Twitter') as string);
+  rowData2= (rowData2.replace('Delete', '')).trim();
 
-    rowData3 = (await DashboardPage.checkTableRowForData('0 Brenden Wagner United States of America, California American Facebook Software Engineer 8 Facebook') as string);
-    rowData3= (rowData3.replace('Delete', '')).trim();
-
+  rowData3 = (await DashboardPage.checkTableRowForData('0 Brenden Wagner United States of America, California American Facebook Software Engineer 8 Facebook') as string);
+  rowData3= (rowData3.replace('Delete', '')).trim();
     // await DashboardPage.tableNextPageButton.click();
     // check to 2nd page
-  
-    if('1 Cara Steves United States of America, New York American Walmart Sales Assistant 5 Google'=== rowData){
+  if('1 Cara Steves United States of America, New York American Walmart Sales Assistant 5 Google' === rowData){
     await counter++;
-    await console.log('Success 1st row check!!'+ counter);
-    }
-    else{
-      console.log('error!!');
-    }
-
-    if('4 Jenny Chang Singapore, Singapore Chinese Singapore Airlines Regional Director 15 Twitter'===rowData2){
-      await counter++;
-      await console.log('Success 2nd row check!!'+ counter);
-    }
-    else{
-      await console.log('error2!!');
-    }
-    
-    if('0 Brenden Wagner United States of America, California American Facebook Software Engineer 8 Facebook'===rowData3){
-      await counter++;
-      await console.log('Success 3rd row check!!'+ counter);
-    }
-    else{
-      await console.log('error3!!');
-    }
-
+  }
+  if('4 Jenny Chang Singapore, Singapore Chinese Singapore Airlines Regional Director 15 Twitter' === rowData2){
+    await counter++;
+  } 
+  if('0 Brenden Wagner United States of America, California American Facebook Software Engineer 8 Facebook' === rowData3){
+    await counter++;
+  }
     // await DashboardPage.tableBackPageButton.click();
     // go back to first page
-   
-
-    expect(counter).to.equal(3);
-  });
+  expect(counter).to.equal(3);
+});
