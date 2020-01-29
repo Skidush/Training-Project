@@ -10,7 +10,6 @@ export class DashboardPage {
         await this.newEmployeeButton.click();
         await FormPage.fillForm();
         await FormPage.addButton.click();
-        // await browser.sleep(1000);
         // await this.closeSuccessMessage.click();
     }
 
@@ -26,14 +25,16 @@ export class DashboardPage {
         return element(by.css('span[class= "ui-paginator-icon pi pi-caret-right"'));
     }
 
+    static get tablePrevPageButton() {
+      return element(by.css('span[class= "ui-paginator-icon pi pi-caret-left"'));
+  }
     static async checkTableRowForData(data: string) {
         let foundData = null;
         (await this.tableRows.getText() as any).forEach(trData => {
           if (trData.includes('Jerrica Azupardo')) {
             foundData = trData;
           }
-        });
-    ​
+        });​
         return foundData;
       }
 
@@ -41,8 +42,9 @@ export class DashboardPage {
        return element(by.css('i[class="pi pi-times"]'));
       }
 
+
       static async successMessage(){
-          await browser.sleep(1000);
+        await browser.sleep(1000);
         await this.closeSuccessMessage.click();
       }
 };

@@ -9,7 +9,7 @@ const expect = chai.expect;
 
 
 Given('Im at the dashboard to update info', async function () {
-  await browser.sleep(2000);
+  await browser.sleep(1000);
 
     const currentUrl = await browser.getCurrentUrl();
     const dashboardUrl = 'http://localhost:4200/dashboard';
@@ -42,6 +42,8 @@ Then('I should view the success message {string}', async function(expectedMessag
   expect( true, 'The success message was not displayed').to.equal(await messageObject.isPresent());
   expect( await messageObject.getText(), 'The success message did not match the expected message').to.equal(expectedMessage);
   
+  await DashboardPage.successMessage();
+  
 })
 
 Then('I should see the new info saved', async function () {
@@ -57,5 +59,5 @@ Then('I should see the new info saved', async function () {
   rowData = (rowData.replace('Delete', '')).trim();
   expect('8 Jerrica Azupardo France Filipino Titus Global idk 2 years Monster Gulf').to.equal(rowData);
 
-  await browser.sleep(5000)
+  await browser.sleep(1000)
 });
