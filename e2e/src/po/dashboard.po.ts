@@ -46,6 +46,7 @@ export class DashboardPage {
   static async createEmployee(createData: EmployeeDetails) {
     await this.newEmployeeButton.click();
     await FormPage.fillForm(createData);
+    await browser.sleep(800);
     await FormPage.formButton('Add').click();
   }
 
@@ -55,6 +56,7 @@ export class DashboardPage {
 
     await employeeRecordElement.click();
     await FormPage.fillForm(updateData);
+    await browser.sleep(800);
     await FormPage.formButton('Update').click();
 
     updateData.id = employeeRecordID;
