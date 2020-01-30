@@ -14,7 +14,7 @@ Feature: Employee
   Scenario: Read Employee records
     Given I am on the dashboard page
     When I "read" an employee record
-    Then I should "see" the employee records in the list
+    Then I should see the employee records in the list
 
   @Update
   Scenario: Update an Employee record
