@@ -19,16 +19,15 @@ exports.config = {
   directConnect: true,
   baseUrl: 'localhost:4300',
   specs: [
-    'src/feature/employee/employee.feature',
+    'e2e/src/feature/security/security.feature'
   ],
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
     require: [
-      'src/step_definition/*.definitions.ts',
-      'src/hooks/generic.hooks.ts'
+      './e2e/src/step_definition/security.definitions.ts'
     ],
-    tags: '@Employee',
+    tags: [],
     strict: true,
     format: [
       `json:reports/mryumul.json`,
