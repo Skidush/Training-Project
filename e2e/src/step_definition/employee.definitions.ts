@@ -3,6 +3,7 @@ import { browser, element, by } from 'protractor';
 import { DashboardPage } from '../po/dashboard.po';
 import { MessagePage } from '../po/message.po';
 import { Employee, EmployeeDetails } from '../model/employee.class';
+import { TestUtils } from '../utils/test.utils';
 
 const chai = require('chai').use(require('chai-as-promised'));
 const expect = chai.expect;
@@ -96,13 +97,7 @@ Then('I should {string} the {string} employee record in the list', async functio
         rowData = (await DashboardPage.checkTableRowForData(fullName) as string);
         rowData = rowData ? (rowData.replace('Delete', '')).trim() : null;
 
-        let stringifiedData = '';
-
-        Object.keys(data).forEach(key => {
-            stringifiedData = `${stringifiedData} ${data[key]}`;
-        });
-
-        expect(stringifiedData.trim()).to.equal(rowData);
+        expect(TestUtils.stringifyData(data).trim()).to.equal(rowData);
         break;
       default:
         throw Error(`Action "${action}" for the employee record is not yet implemented!`)
@@ -115,18 +110,62 @@ Then('I should {string} the {string} employee record in the list', async functio
 
 Then('I should see the employee record(s) in the list', async function() {
   let dataWasNotFound = false;
-  const expectedEmployeeList = [
-    '0 Brenden Wagner United States of America, California American Facebook Software Engineer 8 Facebook',
-    '1 Cara Steves United States of America, New York American Walmart Sales Assistant 5 Google',
-    '4 Jenny Chang Singapore, Singapore Chinese Singapore Airlines Regional Director 15 Twitter',
-  ];
+
+  const brender = new Employee(
+    {
+      id: 0,
+      firstName: 'Brenden',
+      lastName: 'Wagner',
+      country: 'United States of America, California',
+      nationality: 'American',
+      company: 'Facebook',
+      designation: 'Software Engineer',
+      workExp: '8',
+      dataSource: 'Facebook'
+    }
+  );
+
+  const cara = new Employee(
+    {
+      id: 1,
+      firstName: 'Cara',
+      lastName: 'Steves',
+      country: 'United States of America, New York',
+      nationality: 'American',
+      company: 'Walmart',
+      designation: 'Sales Assistant',
+      workExp: '5',
+      dataSource: 'Google'
+    }
+  );
+
+  const jenny = new Employee(
+    {
+      id: 4,
+      firstName: 'Jenny',
+      lastName: 'Chang',
+      country: 'Singapore, Singapore',
+      nationality: 'Chinese',
+      company: 'Singapore Airlines',
+      designation: 'Regional Director',
+      workExp: '15',
+      dataSource: 'Twitter'
+    }
+  );
+
+  const expectedEmployeeList = [];
+  const expectedEmployeeDetails: EmployeeDetails[] = [brender.details , cara.details, jenny.details];
+
+  for (const details of expectedEmployeeDetails) {
+    expectedEmployeeList.push(TestUtils.stringifyData(details));
+  }
 
   for (const employeeData of expectedEmployeeList) {
-    if (!await DashboardPage.checkTableRowForData(employeeData)) {
+    if (!await DashboardPage.checkTableRowForData(employeeData.trim() + '\nDelete')) {
       dataWasNotFound = true;
       break;
     }
   }
 
-  expect(false, 'The expected data was not found in the table').to.equal(dataWasNotFound)
+  expect(false, 'The expected data was not found in the table').to.equal(dataWasNotFound);
 });

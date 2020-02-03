@@ -26,6 +26,8 @@ export class DashboardPage {
   static async checkTableRowForData(data: string) {
     let foundData = null;
     for (const trData of (await this.tableRows.getText() as any)) {
+      console.log('tr ->', trData)
+      console.log('data ->', data)
       if (trData.includes(data)) {
         foundData = trData;
         break;
