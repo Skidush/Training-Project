@@ -17,7 +17,7 @@ exports.config = {
     }
   },
   directConnect: true,
-  baseUrl: 'localhost:4300',
+  baseUrl: 'localhost:4200',
   specs: [
     'src/feature/employee/employee.feature',
   ],

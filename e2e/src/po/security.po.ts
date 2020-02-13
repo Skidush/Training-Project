@@ -1,23 +1,21 @@
 import { element, by, ElementFinder, logging, browser } from 'protractor';
+import { protractor } from 'protractor';
 
 export class SecurityPage {
 
     static get usernameField(): ElementFinder{
-        return element(by.id('username-field'));
+      return;
     }
 
     static get passwordField(): ElementFinder{
-        return element(by.id('password-field'));
+      return;
     }
 
     static get loginButton(): ElementFinder{
-        return element(by.css('button[label="Login"]'));
+      return;
     }
 
 
     static async login(){
-       await this.usernameField.sendKeys('asd');
-       await this.passwordField.sendKeys('asd');
-       await this.loginButton.click();
     }
 }

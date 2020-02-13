@@ -11,9 +11,9 @@ BeforeAll(() => {
 
 Before(async () => {
     // Check if logged out, else login
-    if (await browser.getCurrentUrl() === 'data:,' || await browser.getCurrentUrl() === 'http://localhost:4300/login') {
-        browser.get(`http://localhost:4300/login`);
-        await browser.wait(EC.urlIs(`http://localhost:4300/login`), browser.params.defaultTimer);
+    if (await browser.getCurrentUrl() === 'data:,' || await browser.getCurrentUrl() === 'http://localhost:4200/login') {
+        browser.get(`http://localhost:4200/login`);
+        await browser.wait(EC.urlIs(`http://localhost:4200/login`), browser.params.defaultTimer);
         await SecurityPage.login();
     }
 });
