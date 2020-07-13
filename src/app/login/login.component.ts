@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { Message } from 'primeng/components/common/api';
+import { MessageService } from 'src/services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +13,8 @@ import { Message } from 'primeng/components/common/api';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   users: User[];
-  msgs: Message[] = [];
 
-
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private messageService: MessageService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -33,15 +31,15 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
 
-    this.userService.getUsers().forEach(user => {
-      if (user.username === username && user.password === password) {
-        this.userService.loggedInUserSubject.next(user.username);
-        this.router.navigate(['dashboard']);
-      } else {
-        this.msgs = [];
-        this.msgs.push({severity: 'error', summary: 'Error: ', detail: 'Incorrect username or password!'});
-        this.loginForm.reset();
-      }
-    });
+    const userDetails = this.userService.getUsers().find(user => user.username === username && user.password === password);
+
+    if (userDetails) {
+      this.userService.loggedInUserSubject.next(userDetails.username);
+      this.router.navigate(['dashboard']);
+    } else {
+      this.messageService.clear();
+      this.messageService.addMessage({severity: 'error', summary: 'Error: ', detail: 'Incorrect username or password!'});
+      this.loginForm.reset();
+    }
   }
 }

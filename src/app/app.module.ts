@@ -1,4 +1,4 @@
-import { EmployeeService } from './employee/employee.service';
+import { EmployeeService } from '../services/employee.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,15 +15,15 @@ import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 
-
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { Routes, RouterModule } from '@angular/router';
-import { UserService } from './user/user.service';
+import { UserService } from '../services/user.service';
 import { HumanizePipe } from './humanize.pipe';
+import { MessageComponent } from './message/message.component';
+import { MessageService } from '../services/message.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -38,7 +38,8 @@ const appRoutes: Routes = [
     LoginComponent,
     DashboardComponent,
     HeaderComponent,
-    HumanizePipe
+    HumanizePipe,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     MessagesModule,
     MessageModule
   ],
-  providers: [EmployeeService, UserService],
+  providers: [EmployeeService, UserService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
