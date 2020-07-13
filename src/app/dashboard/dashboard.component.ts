@@ -1,5 +1,5 @@
-import { Employee } from './../employee/employee';
-import { EmployeeService } from '../employee/employee.service';
+import { Employee } from '../../models/employee.model';
+import { EmployeeService } from '../../services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../user/user.service';

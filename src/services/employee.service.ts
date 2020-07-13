@@ -1,4 +1,4 @@
-import { Employee } from './employee';
+import { Employee } from '../models/employee.model';
 
 import { Injectable } from '@angular/core';
 
@@ -111,40 +111,3 @@ export class EmployeeService {
     return this.employee.slice();
   }
 }
-
-// {
-//   id: 5,
-//   firstName: 'Lorenz',
-//   lastName: 'Chang',
-//   country: 'Fiji, Suva',
-//   nationality: 'Fijian',
-//   company: 'Titus Global Tech-Inc',
-//   designation: 'Programmer',
-//   workExp: 2,
-//   cv: '',
-//   dataSource: 'Facebook'
-// },
-// {
-//   id: 6,
-//   firstName: 'Jireh',
-//   lastName: 'Kael',
-//   country: 'Kenya, Nairobi',
-//   nationality: 'Kenyan',
-//   company: 'Titus Global Tech-Inc',
-//   designation: 'Quality Assurance Engineer',
-//   workExp: 1,
-//   cv: '',
-//   dataSource: 'TikTok'
-// },
-// {
-//   id: 7,
-//   firstName: 'Rome',
-//   lastName: 'Joseph',
-//   country: 'United States, Denver, Colorado',
-//   nationality: 'American',
-//   company: 'Titus Global Tech-Inc',
-//   designation: 'Sergeant-at-arms',
-//   workExp: 2,
-//   cv: '',
-//   dataSource: 'Steam'
-// }
