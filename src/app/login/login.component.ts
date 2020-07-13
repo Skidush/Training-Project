@@ -1,8 +1,8 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../user/user';
-import { UserService } from '../user/user.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 import { Message } from 'primeng/components/common/api';
 
 @Component({

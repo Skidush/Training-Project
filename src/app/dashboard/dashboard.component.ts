@@ -2,7 +2,7 @@ import { Employee } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 import * as _ from 'lodash';
