@@ -26,14 +26,10 @@ export class LoginComponent implements OnInit {
   }
 
   onClick() {
-    this.callLogin();
+    this.login();
   }
 
-  onPasswordEnter() {
-    this.callLogin();
-  }
-
-  callLogin() {
+  login() {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
 
