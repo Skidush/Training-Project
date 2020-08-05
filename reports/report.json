@@ -1,0 +1,377 @@
+[
+  {
+    "description": "    As an Admin user, I want to create, update and delete an Employee on my system",
+    "keyword": "Feature",
+    "name": "CRUD Sample application",
+    "line": 1,
+    "id": "crud-sample-application",
+    "tags": [],
+    "uri": "e2e\\features\\sampleCRUD.feature",
+    "elements": [
+      {
+        "id": "crud-sample-application;login",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Login",
+        "tags": [
+          {
+            "name": "@Login",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am on the \"login\" page",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2102000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I \"login\" as \"Admin\"",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 564000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should see the \"dashboard\" page",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 151000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "crud-sample-application;create-a-new-employee",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Create a new employee",
+        "tags": [
+          {
+            "name": "@Create",
+            "line": 10
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am on the \"dashboard\" page",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I \"create\" an employee entry",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2540000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "I should see the \"add\" success message",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "I should see it \"added\" on the employee list table",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 286000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "crud-sample-application;read-an-employee-details",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Read an employee details",
+        "tags": [
+          {
+            "name": "@Read",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I am on the \"dashboard\" page",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I \"view\" an employee entry",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "I should see the employee entry details on the list",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 168000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "crud-sample-application;update-an-employee",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Update an employee",
+        "tags": [
+          {
+            "name": "@Update",
+            "line": 23
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I am on the \"dashboard\" page",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I \"update\" an employee entry",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4071000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "I should see the \"update\" success message",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "I should see it \"updated\" on the employee list table",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 202000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "crud-sample-application;update-an-employee",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Update an employee",
+        "tags": [
+          {
+            "name": "@Delete",
+            "line": 30
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 32,
+            "name": "I am on the \"dashboard\" page",
+            "match": {
+              "location": "e2e\\step_definitions\\security.definitions.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I \"delete\" an employee entry",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2210000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "I should see the \"update\" success message",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "I should see it \"deleted\" on the employee list table",
+            "match": {
+              "location": "e2e\\step_definitions\\samplecrud.definitions.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
