@@ -1,7 +1,7 @@
 # Training-Project
 This project servers as a training material for incoming new hires and interns.
 This project also servers as sa basic system for the trainees to execute automated tests on.
-  Note: Automated tests are thought hands-on and codes are not pushed in the project repository.
+  Note: Automated tests are taught hands-on and codes are not pushed in the project repository.
 
 ## Development server
 
