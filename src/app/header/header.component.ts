@@ -11,4 +11,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  confirmAction(linkName: string) {
+    const result = window.confirm(`You have clicked the link ${linkName}!`);
+    if (result) {
+      // Perform the action
+    } else {
+      // Cancel the action
+    }
+  }
+
 }

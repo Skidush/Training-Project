@@ -5,7 +5,14 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
+import {SelectItem} from 'primeng/api';
+import {RadioButtonModule} from 'primeng/radiobutton';
 import * as _ from 'lodash';
+
+interface City {
+  name: string;
+  code: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -25,12 +32,26 @@ export class DashboardComponent implements OnInit {
   lowerLeftNotification: Message[] = [];
   uploadedFiles: any[] = [];
   formType: string;
+  selectedCity: City;
+  cities: SelectItem[];
+
+  selectedValue: string = 'val1';
 
   constructor(private employeeService: EmployeeService,
               private userService: UserService,
               private router: Router) {}
 
   ngOnInit() {
+    
+    this.cities = [
+      {label:'Select City', value:null},
+      {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
+      {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
+      {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
+      {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
+      {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
+  ];
+
     this.userService.loggedInUserSubject.subscribe(user => {
         this.username = user;
     });
@@ -126,5 +147,21 @@ export class DashboardComponent implements OnInit {
     if (confirm(`Are you sure you want to remove ${rowData.firstName} ${rowData.lastName} from the list of employees?`)) {
       this.employees.splice(this.employees.indexOf(this.employees.find(employee => employee.id === rowData.id)), 1);
     }
+  }
+
+  shuffleDivs() {
+    var divs = document.querySelectorAll('.float-child');
+    var divsArray = Array.from(divs);
+
+    // Randomly shuffle the divs array
+    for (let i = divsArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [divsArray[i], divsArray[j]] = [divsArray[j], divsArray[i]];
+    }
+
+    // Append the shuffled divs back to the container
+    divsArray.forEach(div => {
+      document.body.appendChild(div);
+    });
   }
 }

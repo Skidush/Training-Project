@@ -30,17 +30,198 @@
       </ng-template>
       <ng-template pTemplate="body" let-rowData>
           <tr [pSelectableRow]="rowData" (click)="onShow('Update', rowData)">
-              <td *ngFor="let col of cols;">
+              <td *ngFor="let col of cols;let i = index;">
                 {{ rowData[col.field] }}
               </td>
+              
               <td>
-                  <button pButton type="button" id="delete-employee" label="Delete" (click)="onDeleteRow($event, rowData)" style="width: auto !important; margin: 0.3em;z-index: 100000"></button>
+                  <button pButton type="button" label="Delete" (click)="onDeleteRow($event, rowData)" style="width: auto !important; margin: 0.3em;z-index: 100000"></button>
               </td>
           </tr>
       </ng-template>
     </p-table>
   </div>
 </div>
+
+<!-- <div class="ui-g ui-fluid">
+  <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
+</div> -->
+<button pButton type="button" id="shuffle" label="Shuffle" (click)="shuffleDivs()" style="width: auto !important; margin-bottom: 0.3em;"></button>
+<div class="float-container">
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>1 - Has all special attributes (Name, Classname, ID)</p>
+        <div class="ui-g-12">
+          <label>
+            Option 1
+            <input type="checkbox" class="option1class" id="option1" name="group11" value="true">
+          </label>
+        </div>
+        <div class="ui-g-12">
+          <label>
+            Option 2
+            <input type="checkbox" class="option2class" id="option2" name="group12" value="true">
+          </label>
+        </div>
+        <div class="ui-g-12">
+          <label>Option 3
+            <input type="checkbox" class="option3class" id="option3" name="group13" value="true">
+          </label>
+        </div>
+    </div>
+  </div>
+  
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>2 - Has only Name</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" name="group1_2" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" name="group2_2" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 3
+          <input type="checkbox" name="group3_2" value="true">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>3 - Has only Class</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" class="option1class_3" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" class="option2class_3" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 3
+          <input type="checkbox" class="option3class_3" value="true">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>4 - Has only ID</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" id="option1_4" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" id="option2_4" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 3
+          <input type="checkbox" id="option3_4" value="true">
+        </label>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>5 - Has only Name and Class name</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" class="option1class_5" name="group1_5" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" class="option2class_5" name="group2_5" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label >Option 3
+          <input type="checkbox" class="option3class_5" name="group3_5" value="true">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>6 - Has only Name and ID</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" id="option1_6" name="group1_6" value="true" >
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" id="option2_6" name="group2_6" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 3
+          <input type="checkbox" id="option3_6" name="group3_6" value="true">
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>7 - Has only Class name and ID</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" id="option1_7" class="option1class_7" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" id="option2_7" class="option2class_7" value="true" >
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 3
+          <input type="checkbox" id="option3_7" class="option3class_7" value="true">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="ui-g" style="width:500px;margin-bottom:10px">
+      <p>8 - Has no special selector</p>
+      <div class="ui-g-12">
+        <label>Option 1
+          <input type="checkbox" value="true">
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 2
+          <input type="checkbox" value="true" >
+        </label>
+      </div>
+      <div class="ui-g-12">
+        <label>Option 3
+          <input type="checkbox" value="true">
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div id="success-message">
   <p-messages [(value)]="lowerLeftNotification"></p-messages>
@@ -55,25 +236,25 @@
       <h2>Lead Information</h2>
 
       <span>First Name</span>
-      <input type="text" pInputText formControlName="firstName" #firstName/>
+      <input type="text" pInputText formControlName="firstName" id="firstNameField" #firstName/>
 
       <span>Last Name</span>
-      <input type="text" pInputText formControlName="lastName" />
+      <input type="text" pInputText formControlName="lastName" id="lastNameField"/>
 
       <span>Country</span>
-      <input type="text" pInputText formControlName="country" />
+      <input type="text" pInputText formControlName="country" id="countryField"/>
 
       <span>Nationality</span>
-      <input type="text" pInputText formControlName="nationality" />
+      <input type="text" pInputText formControlName="nationality" id="nationalityField"/>
 
       <span>Company</span>
-      <input type="text" pInputText formControlName="company" />
+      <input type="text" pInputText formControlName="company" id="companyField"/>
 
       <span>Designation</span>
-      <input type="text" pInputText formControlName="designation" />
+      <input type="text" pInputText formControlName="designation" id="designationField"/>
 
       <span>Work Experience</span>
-      <input type="text" pInputText formControlName="workExp" />
+      <input type="text" pInputText formControlName="workExp" id="workExpField"/>
 
       <span>CV</span>
       <input type="file" class="custom-file-input">

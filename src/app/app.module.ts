@@ -14,6 +14,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     DropdownModule,
     TableModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    RadioButtonModule
   ],
   providers: [EmployeeService, UserService, MessageService],
   bootstrap: [AppComponent]
